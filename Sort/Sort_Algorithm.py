@@ -31,7 +31,42 @@ def insertion(nums):
     return nums
 
 def merge(nums):
-    # O(nlogn)
+    # IMPORTANT! O(nlogn)
+    if len(nums) <= 1:
+        return nums
+    middle = len(nums) // 2
+    left = merge(nums[:middle])
+    right = merge(nums[middle:])
+    return merge_sort(left, right)
+
+def merge_sort(left, right):
+    l = 0
+    r = 0
+    result = []
+    while l < len(left) and r < len(right):
+        if left[l] < right[r]:
+            result.append(left[l])
+            l += 1
+        else:
+            result.append(right[r])
+            r += 1
+    result += left[l:]
+    result += right[r:]
+    return result
 
 def quick(nums):
-    # O(nlogn) Worst:O(n^2)
+    # IMPORTANT! O(nlogn) Worst:O(n^2)
+    return qsort(nums, 0, len(nums)-1)
+def qsort(nums, left, right):
+    if left >= right:
+        return
+    m = left
+    for i in range(left + 1, right + 1):
+        if nums[i] < nums[left]:
+            m += 1
+            nums[m], nums[i] = nums[i], nums[m]
+    nums[m], nums[left] = nums[left], nums[m]
+    quick(nums, left, m - 1)
+    quick(nums, m + 1, right)
+
+print(merge(nums))
