@@ -29,3 +29,9 @@ def insertion(nums):
             index -= 1
         nums[index] = value
     return nums
+
+def merge(nums):
+    # O(nlogn)
+
+def quick(nums):
+    # O(nlogn) Worst:O(n^2)
