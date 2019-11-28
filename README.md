@@ -1,2 +1,2 @@
 # Leetcode-Algorithm
-Python, Java, Javascript.
+Python, Java, Javascript, Golang.
