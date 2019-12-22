@@ -9,7 +9,7 @@ def slide_window(nums, k):
         while deq and nums[deq[-1]] <= value:
             deq.pop()
         deq += [index]
-        if index - deq[0] >= k:
+        if index - deq[0] == k:
             deq.popleft()
         if index + 1 >= k:
             res.append(nums[deq[0]])
