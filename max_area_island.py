@@ -1,22 +1,20 @@
 class solution:
     def maxarea(self, matrix):
-        max_area = 0
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                if matrix[i][j] == 1:
-                    self.current_area =0
-                    self.dfs(matrix, i, j)
-                    max_area = max(max_area, self.current_area)
-        return max_area
+        res = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == 1:
+                    self.cur_area = 0
+                    self.dfs(grid, i, j)
+                    res = max(res, self.cur_area)
+        return res
 
     def dfs(self, matrix, i, j):
-        self.current_area += 1
-        matrix[i][j] = 0
-        if j - 1 >= 0 and grid[i][j-1] == 1:
-            self.dfs(grid, i, j-1)
-        if j + 1 < len(grid[0]) and grid[i][j+1] == 1:
-            self.dfs(grid, i, j+1)
-        if i - 1 >= 0 and grid[i-1][j] == 1:
-            self.dfs(grid, i-1, j)
-        if i + 1 < len(grid) and grid[i+1][j] == 1:
-            self.dfs(grid, i+1, j)
+        if i<0 or j<0 or i>=len(grid) or j>=len(grid[0]) or grid[i][j] != 1:
+            return
+        self.cur_area += 1
+        grid[i][j] = 0
+        self.dfs(grid, i, j-1)
+        self.dfs(grid, i, j+1)
+        self.dfs(grid, i-1, j)
+        self.dfs(grid, i+1, j)

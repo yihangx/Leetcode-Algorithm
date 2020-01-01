@@ -7,7 +7,8 @@ class TreeNode:
 class Solution:
     def level_order(self, root):
         res = []
-        self.dfs(root, 0, res)
+        level = 0
+        self.dfs(root, level, res)
         return res
 
     def dfs(self, root, level, res):
