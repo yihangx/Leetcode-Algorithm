@@ -69,4 +69,13 @@ def qsort(nums, left, right):
     quick(nums, left, m - 1)
     quick(nums, m + 1, right)
 
-print(merge(nums))
+
+import heapq
+
+def heap_sort(nums):
+    heap = []
+    for n in nums:
+        heapq.heappush(heap, n)
+    return [heapq.heappop(heap) for i in range(len(heap))]
+
+print(heap_sort(nums))
